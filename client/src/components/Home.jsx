@@ -33,12 +33,10 @@ export default () => {
 	async function upgradeToPremium() {
 		try {
 			const { data: dbRes } = await authenticatedInstance.post('/api/user/upgrade');
-			// override localStorage
-			localStorage.setItem('roles', JSON.stringify(dbRes.data.roles));
-			localStorage.setItem('permissions', JSON.stringify(dbRes.data.permissions));
+			// override localStorage - roles and permissions
+
 			// updating role and permissions in state
-			setRoles(dbRes.data.roles);
-			setPermissions(dbRes.data.permissions);
+
 		} catch (e) {
 			console.log(e)
 		}
