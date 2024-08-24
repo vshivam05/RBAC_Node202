@@ -6,9 +6,9 @@ export default async function fetchRoleAndPermissions(req) {
 	let roles = {};
 	// get roles and add it to object declared above
 	let permissions = {};
-	if (userRoles.length) {
-		// get permissions for each subject
-	}
+	// if (userRoles.length) {
+	// get permissions for each subject
+	// }
 
 	return {
 		roles,

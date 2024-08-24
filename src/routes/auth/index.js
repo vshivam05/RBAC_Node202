@@ -51,6 +51,7 @@ router.post('/login', async (req, res) => {
         const data = await fetchRoleAndPermissions(req)
         res.status(200).json({ token, ...data });
     } catch (err) {
+        console.log(err)
         res.status(500).json({ error: 'Login failed' });
     }
 });

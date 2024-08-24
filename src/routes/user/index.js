@@ -27,9 +27,9 @@ router.post('/upgrade', async (req, res) => {
             userId: req.user._id,
             roleId
         });
-        const { _id: userRoleId } = await userRole.save();
+        await userRole.save();
         const data = await fetchRoleAndPermissions(req)
-        res.status(200).json({
+        res.status(201).json({
             data
         })
     } catch (err) {
