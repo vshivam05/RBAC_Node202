@@ -31,7 +31,7 @@ export default function SignUp() {
 		event.preventDefault();
 		const formData = new FormData(event.currentTarget);
 		try {
-			let res = await axiosInstance.post('/api/auth/register', {
+			let res = await axiosInstance.post(`http://localhost:8082/api/auth/register`, {
 				username: formData.get('username'),
 				password: formData.get('password'),
 			});

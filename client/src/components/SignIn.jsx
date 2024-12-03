@@ -38,7 +38,7 @@ export default function SignInSide() {
 				token,
 				roles,
 				permissions
-			} } = await axiosInstance.post('/api/auth/login', {
+			} } = await axiosInstance.post(`http://localhost:8082/api/auth/login`, {
 				username: formData.get('username'),
 				password: formData.get('password'),
 			});
@@ -46,6 +46,7 @@ export default function SignInSide() {
 			localStorage.setItem('roles', JSON.stringify(roles));
 			localStorage.setItem('permissions', JSON.stringify(permissions));
 			Object.assign(authenticatedInstance.defaults, { headers: { Authorization: token } });
+			console.log(token);
 			navigate('/home')
 		} catch (e) {
 			console.log(e)

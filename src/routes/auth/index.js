@@ -24,9 +24,11 @@ router.post('/register', async (req, res) => {
             userId,
             roleId
         }).save();
+        console.log(user);
         res.status(201).json({ message: 'User registered successfully' });
     } catch (error) {
-        res.status(500).json({ error: 'Registration failed' });
+        console.log(error);
+        res.status(500).json({ error: 'Registration failed',error});
     }
 });
 
@@ -41,13 +43,14 @@ router.post('/login', async (req, res) => {
         const passwordMatch = await bcrypt.compare(password, user.password);
         if (!passwordMatch) {
             return res.status(401).json({ error: 'Authentication failed' });
-        }
+        }  
         req.user = {
             _id: user._id
         }
         const token = jwt.sign({ userId: user._id, userName: user.username }, process.env.JWT_SECRET, {
             expiresIn: '2h',
         });
+        
         const data = await fetchRoleAndPermissions(req)
         res.status(200).json({ token, ...data });
     } catch (err) {
