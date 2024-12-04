@@ -35,7 +35,7 @@ export default function Home() {
 
   async function upgradeToPremium() {
     try {
-      const { data: dbRes } = await authenticatedInstance.post('/api/user/upgrade');
+      const { data: dbRes } = await authenticatedInstance.post('http://localhost:8082/api/user/upgrade');
       // Update roles and permissions in localStorage and state
       localStorage.setItem('roles', JSON.stringify(dbRes.data.roles));
       localStorage.setItem('permissions', JSON.stringify(dbRes.data.permissions));
@@ -48,7 +48,7 @@ export default function Home() {
 
   async function likeSong() {
     try {
-      await authenticatedInstance.post('/api/song/like');
+      await authenticatedInstance.post('http://localhost:8082/api/song/like');
     } catch (e) {
       console.error(e);
     }
@@ -56,7 +56,7 @@ export default function Home() {
 
   async function downloadSong() {
     try {
-      await authenticatedInstance.get('/api/song/download');
+      await authenticatedInstance.get('http://localhost:8082/api/song/download');
     } catch (e) {
       console.error(e);
     }

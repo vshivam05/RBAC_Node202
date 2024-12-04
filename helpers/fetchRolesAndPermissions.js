@@ -20,8 +20,8 @@ export default async function fetchRoleAndPermissions(req) {
     })
   ).forEach(({ role }) => {
     roles[role] = true;
-  });
-
+  });   
+  
   let permissions = {};
   if (userRoles.length) {
     // get permissions for each subject
