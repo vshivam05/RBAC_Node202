@@ -40,7 +40,11 @@ export const canUserDownloadSong = async (req, res, next) => {
     roleId:{ $in: userRoles.map(({roleId})=> roleId)},
   })
 
-  if(rolePermissions.some(({ permissionId})=> permissionId.equals(permisssion._id)); 
+  if(rolePermissions.some(({ permissionId})=> permissionId.equals(permisssion._id)
+  )
+)
+next();
 
-  next();
+  else res.status(401).json({error: "Insufficient Permission"});
+
 };
